@@ -44,7 +44,7 @@ public class Afficheur {
 		System.out.println("  Banc : 1.X | 2.X | 3.X | 4.X | 5.X");
 		System.out.println("Main : 1.X | 2.X | 3.X | 4.X | 5.X");
 	}
-	
+
 	public void joueurAdv(String nom, int vie, int pop) {
 		System.out.print("\n");
 		System.out.println("ADVERSAIRE :");
