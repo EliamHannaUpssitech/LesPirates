@@ -75,45 +75,40 @@ public class Afficheur {
 		// création de la pioche (40 cartes)
 		// création de la zone utilitaire
 
-		Afficheur contexte = new Afficheur();
-		contexte.afficherContexte();
-		Afficheur regles = new Afficheur();
-		regles.afficherRegles();
+		Afficheur afficheur = new Afficheur();
 		
-		Afficheur joueur1 = new Afficheur();
-		String j1nom = joueur1.nomJoueur(1);
+		afficheur.afficherContexte();
+		afficheur.afficherRegles();
+		
+		String j1nom = afficheur.nomJoueur(1);
 		int j1vie = 5;
 		int j1pop = 0;
 		// création de la main joueur 1 & banc joueur 1
 		// piocher 4 cartes dans la main joueur 1
 
-		Afficheur joueur2 = new Afficheur();
-		String j2nom = joueur2.nomJoueur(2);
+		String j2nom = afficheur.nomJoueur(2);
 		int j2vie = 5;
 		int j2pop = 0;
 		// création de la main joueur 2 & banc joueur 2
 		// piocher 4 cartes dans la main joueur 1
 		
-		Afficheur debut = new Afficheur();
-		debut.afficherDebut(j1nom, j2nom);
+		afficheur.afficherDebut(j1nom, j2nom);
 
-		Afficheur tourActuel = new Afficheur();
 		// while(joueur1.getVie() > 0 && joueur2.getVie() > 0 && joueur1.getPopularite() < 5 && joueur2.getPopularite() < 5) {
 			int tour = 0;
-			tour = tourActuel.whichTurn(tour);
+			tour = afficheur.whichTurn(tour);
 			
-			joueur1.joueurJoue(j1nom, j1vie, j1pop);
-			joueur2.joueurAdv(j2nom, j2vie, j2pop);
-			joueur1.utilisationCarte(j1nom);
+			afficheur.joueurJoue(j1nom, j1vie, j1pop);
+			afficheur.joueurAdv(j2nom, j2vie, j2pop);
+			afficheur.utilisationCarte(j1nom);
 	
 			// if(joueur1.getVie() > 0 && joueur2.getVie() > 0 && joueur1.getPopularite() < 5 && joueur2.getPopularite() < 5) {
-				joueur1.joueurJoue(j1nom, j1vie, j1pop);
-				joueur2.joueurAdv(j2nom, j2vie, j2pop);
-				joueur1.utilisationCarte(j1nom);
+			afficheur.joueurJoue(j1nom, j1vie, j1pop);
+				afficheur.joueurAdv(j2nom, j2vie, j2pop);
+				afficheur.utilisationCarte(j1nom);
 			// }
 		// }
 		
-		Afficheur gagnant = new Afficheur();
-		gagnant.gagnant(j2nom);
+		afficheur.gagnant(j2nom);
 	}
 }
