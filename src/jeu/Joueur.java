@@ -1,23 +1,22 @@
 package jeu;
 
+import cartes.Banc;
 import cartes.Carte;
+import cartes.Main;
 
 public class Joueur {
 	private String nom;
 	private int vie;
 	private int popularite;
-	private Carte main[];
-	private Carte banc[];
+	private Main main;
+	private Banc banc;
 
-	public Joueur(String nom) {
+	public Joueur(String nom, Main main, Banc banc) {
 		this.nom = nom;
 		vie = 5;
 		popularite = 0;
-		Carte main[] = new Carte[5];
-		for(int i=0; i<4; i++) {
-			main[i].pioche();
-		}
-		Carte banc[] = new Carte[5];
+		this.main = main;
+		this.banc = banc;
 	}
 
 	public String getNom() {
@@ -38,5 +37,17 @@ public class Joueur {
 
 	public void affectPopularite(int nombre) {
 		popularite += nombre;
+	}
+	
+	public void afficheMain() {
+		main.afficheMain();
+	}
+	
+	public void afficheBanc() {
+		banc.afficheBanc();
+	}
+	
+	public Carte choixCarte(int index) {
+		return choixCarte(index);
 	}
 }

@@ -2,6 +2,11 @@ package jeu;
 
 import java.util.Scanner;
 
+import cartes.Banc;
+import cartes.Carte;
+import cartes.Main;
+import cartes.Pioche;
+
 public class Afficheur {
 	private static Scanner scanner = new Scanner(System.in);
 	
@@ -36,79 +41,89 @@ public class Afficheur {
 		return turn;
 	}
 	
-	public void joueurJoue(String nom, int vie, int pop) {
-		// joueur pioche une carte
+	public void joueurJoue(Joueur joueur) {
+		joueur.piocher();
 		System.out.print("\n");
 		System.out.println("VOUS :");
-		System.out.println(nom + " : " + vie + " HP | " + pop + " Popularité");
-		System.out.println("  Banc : 1.X | 2.X | 3.X | 4.X | 5.X");
-		System.out.println("Main : 1.X | 2.X | 3.X | 4.X | 5.X");
+		System.out.println(joueur.getNom() + " : " + joueur.getVie() + " HP | " + joueur.getPopularite() + " Popularité");
+		//System.out.println("  Banc : 1.X | 2.X | 3.X | 4.X | 5.X");
+		//System.out.println("Main : 1.X | 2.X | 3.X | 4.X | 5.X");
+		joueur.afficheBanc();
+		joueur.afficheMain();
 	}
 
-	public void joueurAdv(String nom, int vie, int pop) {
+	public void joueurAdv(Joueur joueur) {
 		System.out.print("\n");
 		System.out.println("ADVERSAIRE :");
-		System.out.println(nom + " : " + vie + " HP | " + pop + " Popularité");
-		System.out.println("  Banc : 1.X | 2.X | 3.X | 4.X | 5.X");
+		System.out.println(joueur.getNom() + " : " + joueur.getVie() + " HP | " + joueur.getPopularite() + " Popularité");
+		//System.out.println("  Banc : 1.X | 2.X | 3.X | 4.X | 5.X");
+		joueur.afficheBanc();
 	}
 	
-	public void utilisationCarte(String nom) {
+	public void utilisationCarte(Joueur joueurUtil, Joueur joueurAdv) {
 		System.out.print("\n");
-		System.out.print(nom + ", choisissez une carte à utiliser de votre main : ");
+		System.out.print(joueurUtil.getNom() + ", choisissez une carte à utiliser de votre main : ");
 		int choixCarte = scanner.nextInt();
-		// if(main[choixCarte] == passive) {
-			System.out.print("Choisissez l'emplacement d'où mettre la carte : ");
-			choixCarte = scanner.nextInt();
-		// }
-		// effetCarte
-		String effet = "BOUM";
-		System.out.println("L'effet " + effet + " à été appliqué.");
+		Carte carteUtilisee = joueurUtil.choixCarte(choixCarte);
+		System.out.println("L'effet " + carteUtilisee.getNom() + " à été appliqué.");
+		carteUtilisee.affectEffet(joueurUtil, joueurAdv);
 		// carte retirée de la main et ajoutée au banc/defausse
 	}
 	
-	public void gagnant(String nom) {
-		System.out.println("\nLe gagnant est le pirate " + nom + " !!");
+	public void gagnant(Joueur gagnant) {
+		System.out.println("\nLe gagnant est le pirate " + gagnant.getNom() + " !!");
 	}
 
 	public static void main(String[] args) {
 
-		// création de la pioche (40 cartes)
+		Pioche pioche = new Pioche();
 		// création de la zone utilitaire
 
 		Afficheur afficheur = new Afficheur();
+		Joueur gagnant;
 		
 		afficheur.afficherContexte();
 		afficheur.afficherRegles();
 		
-		String j1nom = afficheur.nomJoueur(1);
-		int j1vie = 5;
-		int j1pop = 0;
-		// création de la main joueur 1 & banc joueur 1
-		// piocher 4 cartes dans la main joueur 1
-
-		String j2nom = afficheur.nomJoueur(2);
-		int j2vie = 5;
-		int j2pop = 0;
+		Main mainj1 = new Main(pioche);
+		Banc bancj1 = new Banc();
+		Joueur joueur1 = new Joueur(afficheur.nomJoueur(1), mainj1, bancj1);
+		
+		Main mainj2 = new Main(pioche);
+		Banc bancj2 = new Banc();
+		Joueur joueur2 = new Joueur(afficheur.nomJoueur(1), mainj2, bancj2);
 		// création de la main joueur 2 & banc joueur 2
 		// piocher 4 cartes dans la main joueur 1
 		
-		afficheur.afficherDebut(j1nom, j2nom);
+		afficheur.afficherDebut(joueur1.getNom(), joueur2.getNom());
+		
+		int tour = 0;
 
-		// while(joueur1.getVie() > 0 && joueur2.getVie() > 0 && joueur1.getPopularite() < 5 && joueur2.getPopularite() < 5) {
-			int tour = 0;
+		while(joueur1.getVie() > 0 && joueur2.getVie() > 0 && joueur1.getPopularite() < 5 && joueur2.getPopularite() < 5) {
 			tour = afficheur.whichTurn(tour);
 			
-			afficheur.joueurJoue(j1nom, j1vie, j1pop);
-			afficheur.joueurAdv(j2nom, j2vie, j2pop);
-			afficheur.utilisationCarte(j1nom);
+			afficheur.joueurJoue(joueur1);
+			afficheur.joueurAdv(joueur2);
+			afficheur.utilisationCarte(joueur1, joueur2);
 	
-			// if(joueur1.getVie() > 0 && joueur2.getVie() > 0 && joueur1.getPopularite() < 5 && joueur2.getPopularite() < 5) {
-			afficheur.joueurJoue(j1nom, j1vie, j1pop);
-				afficheur.joueurAdv(j2nom, j2vie, j2pop);
-				afficheur.utilisationCarte(j1nom);
-			// }
-		// }
+			if(joueur1.getVie() > 0 && joueur2.getVie() > 0 && joueur1.getPopularite() < 5 && joueur2.getPopularite() < 5) {
+				afficheur.joueurJoue(joueur2);
+				afficheur.joueurAdv(joueur1);
+				afficheur.utilisationCarte(joueur2, joueur1);
+			}
+		}
 		
-		afficheur.gagnant(j2nom);
+		if(joueur1.getVie() <= 0 || joueur2.getPopularite() >= 5) {
+			gagnant = joueur2;
+		}else {
+			gagnant = joueur1;
+		}
+		
+		pioche.afficherPioche();
+		
+		afficheur.joueurJoue(joueur1);
+		afficheur.joueurJoue(joueur2);
+		
+		afficheur.gagnant(gagnant);
 	}
 }
