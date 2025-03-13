@@ -2,17 +2,19 @@ package cartes;
 
 import java.util.Random;
 
+import effets.AttaqueDirecte;
+import effets.GainPopularite;
+import effets.Omnicience;
+import effets.PropageRumeur;
+import effets.SoinVie;
+
 public class Pioche {
 	private Carte pioche[] = new Carte[40];
 	private int nbCartePioche = 40;
 	
 	public Pioche() {
-		for(int i=0; i<20; i++) {
-			pioche[i] = new Carte(Effet.GAINPOPULARITE, 0, 1);
-		}
-		for(int i=20; i<40; i++) {
-			pioche[i] = new Carte(Effet.ATTAQUEDIRECTE, -1, 0);
-		}
+		
+		initPioche();
 		
 		// Mélange de la pioche
 		Random rand = new Random();
@@ -36,5 +38,24 @@ public class Pioche {
 		pioche[nbCartePioche-1] = null;
 		nbCartePioche--;
 		return cartePiochee;
+	}
+	
+	public void initPioche() {
+		for(int i=0; i<15; i++) {
+			pioche[i] = new GainPopularite(Effet.GAINPOPULARITE);	// 15 cartes
+		}
+		for(int i=15; i<30; i++) {
+			pioche[i] = new AttaqueDirecte(Effet.ATTAQUEDIRECTE);	// 15 cartes
+		}
+		for(int i=30; i<33; i++) {
+			pioche[i] = new SoinVie(Effet.SOINVIE);					// 3 cartes
+		}
+		for(int i=33; i<36; i++) {
+			pioche[i] = new PropageRumeur(Effet.PROPAGERUMEUR);		// 3 cartes
+		}
+		for(int i=36; i<40; i++) {
+			pioche[i] = new Omnicience(Effet.OMNICIENCE);			// 4 cartes
+		}
+		
 	}
 }

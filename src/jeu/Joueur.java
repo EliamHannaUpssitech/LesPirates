@@ -3,6 +3,7 @@ package jeu;
 import cartes.Banc;
 import cartes.Carte;
 import cartes.Main;
+import cartes.Pioche;
 
 public class Joueur {
 	private String nom;
@@ -48,6 +49,12 @@ public class Joueur {
 	}
 	
 	public Carte choixCarte(int index) {
-		return choixCarte(index);
+		Carte carteUtil = main.getMain(index);
+		main.jouerCarte(index);
+		return carteUtil;
+	}
+	
+	public void piocher(Pioche pioche) {
+		main.ajouterCarte(pioche.piocher());
 	}
 }

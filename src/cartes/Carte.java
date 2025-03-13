@@ -2,28 +2,16 @@ package cartes;
 
 import jeu.Joueur;
 
-public class Carte {
+public abstract class Carte {
 	private Effet effet;
-	private int affectVie;
-	private int affectPopularite;
 	
-	public Carte(Effet effet, int affectVie, int affectPopularite) {
+	public Carte(Effet effet) {
 		this.effet = effet;
-		this.affectVie = affectVie;
-		this.affectPopularite = affectPopularite;
 	}
 	
 	public String getNom() {
 		return effet.toString();
 	}
 	
-	public void affectEffet(Joueur joueurUtil, Joueur joueurAdv) {
-		if(effet.toInt() == 0) {
-			joueurUtil.affectVie(affectVie);
-			joueurUtil.affectPopularite(affectPopularite);
-		}else {
-			joueurAdv.affectVie(affectVie);
-			joueurAdv.affectPopularite(affectPopularite);
-		}
-	}
+	public abstract void affectEffet(Joueur joueurUtil, Joueur joueurAdv);
 }

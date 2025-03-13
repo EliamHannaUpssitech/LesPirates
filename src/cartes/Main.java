@@ -3,6 +3,7 @@ package cartes;
 public class Main {
 	private Carte main[] = new Carte[5];
 	private int nbCartes = 5;
+	private int idCarteJouee = 4;
 	
 	public Main(Pioche pioche) {
 		for(int i=0; i<4; i++) {
@@ -29,7 +30,11 @@ public class Main {
 	}
 	
 	public void ajouterCarte(Carte carte) {
-		main[4] = carte;
+		main[idCarteJouee] = carte;
+	}
+	
+	public void jouerCarte(int idCarte) {
+		idCarteJouee = idCarte;
 	}
 	
 	public Carte choixCarte(int index) {
