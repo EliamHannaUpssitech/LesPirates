@@ -23,9 +23,9 @@ public class Main {
 	public String afficheMain() {
 		String afficheurMain = "\tMain :";
 		for(int i=0; i<5; i++) {
-			afficheurMain += " " + (i+1) + ".";
+			afficheurMain += "\n\t  " + (i+1) + ".";
 			if(main[i] != null) {
-				afficheurMain += main[i].getNom();
+				afficheurMain += main[i].getNom() + "\t" + main[i].getDesc();
 			}else {
 				afficheurMain += "/";
 			}

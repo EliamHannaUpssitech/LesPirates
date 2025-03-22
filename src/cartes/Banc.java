@@ -31,9 +31,9 @@ public class Banc {
 	public String afficheBanc() {
 		String afficheurBanc = "\tBanc :";
 		for(int i=0; i<5; i++) {
-			afficheurBanc += " " + (i+1) + ".";
+			afficheurBanc += "\n\t  " + (i+1) + ".";
 			if(banc[i] != null) {
-				afficheurBanc += banc[i].getNom();
+				afficheurBanc += banc[i].getNom() + "\t" + banc[i].getDesc();
 			}else {
 				afficheurBanc += "/";
 			}

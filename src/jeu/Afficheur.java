@@ -59,7 +59,6 @@ public class Afficheur {
 	public void utilisationCarte(Joueur joueurUtil, Joueur joueurAdv) {
 		System.out.print("\n");
 		
-		
 		System.out.print(joueurUtil.getNom() + ", choisissez une carte à utiliser de votre main : ");
 		int choixCarte = scanner.nextInt();
 		Carte carteUtilisee = joueurUtil.choixCarte(choixCarte-1);
@@ -67,7 +66,6 @@ public class Afficheur {
 		System.out.print("Choisissez où jouer cette carte : ");
 		int choixBanc = scanner.nextInt();
 		joueurUtil.jouerCarte(carteUtilisee, choixBanc, joueurUtil, joueurAdv);
-		
 		
 		System.out.println("L'effet " + carteUtilisee.getNom() + " à été appliqué.");
 	}

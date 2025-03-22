@@ -3,8 +3,10 @@ package cartes;
 import java.util.Random;
 
 import effets.AttaqueDirecte;
+import effets.BouletDeCanon;
 import effets.GainPopularite;
 import effets.Omnicience;
+import effets.PopulariteUltime;
 import effets.PropageRumeur;
 import effets.Roulette;
 import effets.SoinVie;
@@ -42,23 +44,29 @@ public class Pioche {
 	}
 	
 	public void initPioche() {
-		for(int i=0; i<13; i++) {
-			pioche[i] = new GainPopularite(Effet.GAINPOPULARITE);	// 13 cartes
+		for(int i=0; i<9; i++) {
+			pioche[i] = new GainPopularite(Effet.GAINPOPULARITE);		// 9 cartes
 		}
-		for(int i=13; i<26; i++) {
-			pioche[i] = new AttaqueDirecte(Effet.ATTAQUEDIRECTE);	// 13 cartes
+		for(int i=9; i<18; i++) {
+			pioche[i] = new AttaqueDirecte(Effet.ATTAQUEDIRECTE);		// 9 cartes
+		}
+		for(int i=18; i<22; i++) {
+			pioche[i] = new PopulariteUltime(Effet.POPULARITEULTIME);	// 4 cartes
+		}
+		for(int i=22; i<26; i++) {
+			pioche[i] = new BouletDeCanon(Effet.BOULETDECANON);			// 4 cartes
 		}
 		for(int i=26; i<29; i++) {
-			pioche[i] = new SoinVie(Effet.SOINVIE);					// 3 cartes
+			pioche[i] = new SoinVie(Effet.SOINVIE);						// 3 cartes
 		}
 		for(int i=29; i<32; i++) {
-			pioche[i] = new PropageRumeur(Effet.PROPAGERUMEUR);		// 3 cartes
+			pioche[i] = new PropageRumeur(Effet.PROPAGERUMEUR);			// 3 cartes
 		}
 		for(int i=32; i<36; i++) {
-			pioche[i] = new Omnicience(Effet.OMNICIENCE);			// 4 cartes
+			pioche[i] = new Omnicience(Effet.OMNICIENCE);				// 4 cartes
 		}
 		for(int i=36; i<40; i++) {
-			pioche[i] = new Roulette(Effet.ROULETTE);				// 4 cartes
+			pioche[i] = new Roulette(Effet.ROULETTE);					// 4 cartes
 		}
 		
 	}

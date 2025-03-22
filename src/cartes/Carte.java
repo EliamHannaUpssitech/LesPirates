@@ -13,6 +13,10 @@ public abstract class Carte {
 		return effet.toString();
 	}
 	
+	public String getDesc() {
+		return effet.afficheDescription();
+	}
+	
 	public abstract void affectEffet(Joueur joueurUtil, Joueur joueurAdv);
 	
 	public abstract void removeEffet(Joueur joueurUtil, Joueur joueurAdv);
