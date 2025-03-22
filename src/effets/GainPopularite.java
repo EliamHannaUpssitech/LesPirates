@@ -14,4 +14,9 @@ public class GainPopularite extends Carte {
 	public void affectEffet(Joueur joueurUtil, Joueur joueurAdv) {
 		joueurUtil.affectPopularite(1);
 	}
+	
+	@Override
+	public void removeEffet(Joueur joueurUtil, Joueur joueurAdv) {
+		joueurUtil.affectPopularite(-1);
+	}
 }

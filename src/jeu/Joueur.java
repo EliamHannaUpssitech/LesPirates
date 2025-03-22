@@ -12,12 +12,12 @@ public class Joueur {
 	private Main main;
 	private Banc banc;
 
-	public Joueur(String nom, Main main, Banc banc) {
+	public Joueur(String nom, Pioche pioche) {
 		this.nom = nom;
 		vie = 5;
 		popularite = 0;
-		this.main = main;
-		this.banc = banc;
+		main = new Main(pioche);
+		banc = new Banc();
 	}
 
 	public String getNom() {
@@ -40,18 +40,22 @@ public class Joueur {
 		popularite += nombre;
 	}
 	
-	public void afficheMain() {
-		main.afficheMain();
+	public String afficheMain() {
+		return main.afficheMain();
 	}
 	
-	public void afficheBanc() {
-		banc.afficheBanc();
+	public String afficheBanc() {
+		return banc.afficheBanc();
 	}
 	
 	public Carte choixCarte(int index) {
 		Carte carteUtil = main.getMain(index);
 		main.jouerCarte(index);
 		return carteUtil;
+	}
+	
+	public void jouerCarte(Carte carte, int index, Joueur joueurUtil, Joueur joueurAdv) {
+		banc.jouerCarte(carte, index, joueurUtil, joueurAdv);
 	}
 	
 	public void piocher(Pioche pioche) {

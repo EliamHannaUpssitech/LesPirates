@@ -14,4 +14,6 @@ public abstract class Carte {
 	}
 	
 	public abstract void affectEffet(Joueur joueurUtil, Joueur joueurAdv);
+	
+	public abstract void removeEffet(Joueur joueurUtil, Joueur joueurAdv);
 }

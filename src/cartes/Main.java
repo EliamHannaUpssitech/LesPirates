@@ -9,6 +9,7 @@ public class Main {
 		for(int i=0; i<4; i++) {
 			this.main[i] = pioche.piocher();
 		}
+		this.main[4] = null;
 	}
 	
 	public Carte getMain(int idCarte) {
@@ -19,14 +20,18 @@ public class Main {
 		return nbCartes;
 	}
 	
-	public void afficheMain() {
-		System.out.print("Main :");
+	public String afficheMain() {
+		String afficheurMain = "\tMain :";
 		for(int i=0; i<5; i++) {
+			afficheurMain += " " + (i+1) + ".";
 			if(main[i] != null) {
-				System.out.print(" " + (i+1) + "." + main[i].getNom());
+				afficheurMain += main[i].getNom();
+			}else {
+				afficheurMain += "/";
 			}
 		}
-		System.out.print("\n");
+		afficheurMain += "\n";
+		return afficheurMain;
 	}
 	
 	public void ajouterCarte(Carte carte) {
@@ -35,12 +40,12 @@ public class Main {
 	
 	public void jouerCarte(int idCarte) {
 		idCarteJouee = idCarte;
+		main[idCarteJouee] = null;
 	}
 	
 	public Carte choixCarte(int index) {
 		Carte carteChoix = main[index-1];
 		main[index-1] = null;
-		// AJOUT D'UN DECALAGE
 		return carteChoix;
 	}
 }

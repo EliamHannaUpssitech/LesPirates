@@ -12,6 +12,11 @@ public class Omnicience extends Carte {
 	
 	@Override
 	public void affectEffet(Joueur joueurUtil, Joueur joueurAdv) {
-		joueurAdv.afficheMain();
+		System.out.println(joueurAdv.afficheMain());
+	}
+	
+	@Override
+	public void removeEffet(Joueur joueurUtil, Joueur joueurAdv) {
+		System.out.println(joueurUtil.getNom() + " a perdu ses lunettes...");
 	}
 }

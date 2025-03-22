@@ -6,6 +6,7 @@ import effets.AttaqueDirecte;
 import effets.GainPopularite;
 import effets.Omnicience;
 import effets.PropageRumeur;
+import effets.Roulette;
 import effets.SoinVie;
 
 public class Pioche {
@@ -41,20 +42,23 @@ public class Pioche {
 	}
 	
 	public void initPioche() {
-		for(int i=0; i<15; i++) {
-			pioche[i] = new GainPopularite(Effet.GAINPOPULARITE);	// 15 cartes
+		for(int i=0; i<13; i++) {
+			pioche[i] = new GainPopularite(Effet.GAINPOPULARITE);	// 13 cartes
 		}
-		for(int i=15; i<30; i++) {
-			pioche[i] = new AttaqueDirecte(Effet.ATTAQUEDIRECTE);	// 15 cartes
+		for(int i=13; i<26; i++) {
+			pioche[i] = new AttaqueDirecte(Effet.ATTAQUEDIRECTE);	// 13 cartes
 		}
-		for(int i=30; i<33; i++) {
+		for(int i=26; i<29; i++) {
 			pioche[i] = new SoinVie(Effet.SOINVIE);					// 3 cartes
 		}
-		for(int i=33; i<36; i++) {
+		for(int i=29; i<32; i++) {
 			pioche[i] = new PropageRumeur(Effet.PROPAGERUMEUR);		// 3 cartes
 		}
-		for(int i=36; i<40; i++) {
+		for(int i=32; i<36; i++) {
 			pioche[i] = new Omnicience(Effet.OMNICIENCE);			// 4 cartes
+		}
+		for(int i=36; i<40; i++) {
+			pioche[i] = new Roulette(Effet.ROULETTE);				// 4 cartes
 		}
 		
 	}

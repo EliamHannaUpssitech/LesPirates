@@ -14,4 +14,9 @@ public class AttaqueDirecte extends Carte {
 	public void affectEffet(Joueur joueurUtil, Joueur joueurAdv) {
 		joueurAdv.affectVie(-1);
 	}
+	
+	@Override
+	public void removeEffet(Joueur joueurUtil, Joueur joueurAdv) {
+		joueurAdv.affectVie(1);
+	}
 }

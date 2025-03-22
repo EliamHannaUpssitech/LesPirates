@@ -14,4 +14,9 @@ public class SoinVie extends Carte {
 	public void affectEffet(Joueur joueurUtil, Joueur joueurAdv) {
 		joueurUtil.affectVie(1);
 	}
+	
+	@Override
+	public void removeEffet(Joueur joueurUtil, Joueur joueurAdv) {
+		joueurUtil.affectVie(-1);
+	}
 }

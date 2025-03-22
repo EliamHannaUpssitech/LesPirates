@@ -14,4 +14,9 @@ public class PropageRumeur extends Carte {
 	public void affectEffet(Joueur joueurUtil, Joueur joueurAdv) {
 		joueurAdv.affectPopularite(-1);
 	}
+	
+	@Override
+	public void removeEffet(Joueur joueurUtil, Joueur joueurAdv) {
+		joueurAdv.affectPopularite(1);
+	}
 }
