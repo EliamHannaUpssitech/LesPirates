@@ -76,4 +76,8 @@ public interface Afficheur {
 		System.out.print(joueur2.afficheBanc());
 		System.out.print(joueur2.afficheMain());
 	}
+	
+	public static void afficherPioche(Pioche pioche) {
+		System.out.println(pioche.afficherPioche());
+	}
 }

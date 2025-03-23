@@ -79,7 +79,7 @@ public class Jeu implements Afficheur {
 			gagnant = joueur1;
 		}
 		
-		pioche.afficherPioche();
+		Afficheur.afficherPioche(pioche);
 		
 		Afficheur.afficheJeu(joueur1, joueur2);
 		

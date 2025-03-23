@@ -29,10 +29,12 @@ public class Pioche {
         }
 	}
 	
-	public void afficherPioche() {
+	public String afficherPioche() {
+		String affichagePioche = "";
 		for(int i=0; i<nbCartePioche; i++) {
-			System.out.println(i+1 + " : " + pioche[i].getNom());
+			affichagePioche += i+1 + " : " + pioche[i].getNom() + "\n";
 		}
+		return affichagePioche;
 	}
 	
 	public Carte piocher() {
