@@ -1,7 +1,5 @@
 package jeu;
 
-import java.util.Scanner;
-
 import cartes.Carte;
 import cartes.Pioche;
 
